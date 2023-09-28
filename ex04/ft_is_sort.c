@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:40:07 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 16:55:21 by ade-beco         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:27:30 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 	int	sorted;
 
 	i = 0;
-	sorted = 0;
+	sorted = 1;
 	while (i < length - 1 && sorted != 0)
 	{
 		if ((*f)(tab[i], tab[i + 1]) < 0)
