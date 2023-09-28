@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:19:44 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:28 by ade-beco         ###   ########.fr       */
+/*   Created: 2023/09/14 11:19:38 by ade-beco          #+#    #+#             */
+/*   Updated: 2023/09/28 15:11:47 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "do_op.h"
 
-/*int ft_test(int x)
+int	ft_atoi(char *str)
 {
-	return(x + 2);
-}*/
-
-int	*ft_map(int *tab, int lenght, int (*f)(int))
-{
-	int	*out;
 	int	i;
+	int	n;
+	int	resu;
 
-	out = malloc(sizeof(int) * lenght);
-	if (!out)
-		return (NULL);
 	i = 0;
-	while (i < lenght)
+	n = 1;
+	resu = 0;
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
+		|| (str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
+		i++;
+	while ((str[i] == '+') || (str[i] == '-'))
 	{
-		out[i] = (*f)(tab[i]);
+		if (str[i] == '-')
+			n = -n;
 		i++;
 	}
-	return (out);
+	while ((str[i] > 47) && (str[i] < 58))
+	{
+		resu = ((resu * 10) + (str[i] - '0'));
+		i++;
+	}
+	return (resu * n);
 }
-
-/*int	main(void)
-{
-	int	tab[] = {2147364746, 45, 78 , 8484, 4984849};
-	ft_map(tab, 5, &ft_test);
-}*/

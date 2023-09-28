@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:19:44 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:28 by ade-beco         ###   ########.fr       */
+/*   Created: 2023/09/14 11:05:07 by ade-beco          #+#    #+#             */
+/*   Updated: 2023/09/28 15:39:11 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "do_op.h"
 
-/*int ft_test(int x)
+void	ft_putnbr(int nb)
 {
-	return(x + 2);
-}*/
-
-int	*ft_map(int *tab, int lenght, int (*f)(int))
-{
-	int	*out;
-	int	i;
-
-	out = malloc(sizeof(int) * lenght);
-	if (!out)
-		return (NULL);
-	i = 0;
-	while (i < lenght)
+	if (nb > 9)
 	{
-		out[i] = (*f)(tab[i]);
-		i++;
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
-	return (out);
+	else if (nb == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		ft_putnbr(147483648);
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+		ft_putnbr(nb);
+	}
+	else
+		ft_putchar(nb + '0');
 }
-
-/*int	main(void)
-{
-	int	tab[] = {2147364746, 45, 78 , 8484, 4984849};
-	ft_map(tab, 5, &ft_test);
-}*/

@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:19:44 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:28 by ade-beco         ###   ########.fr       */
+/*   Created: 2023/09/28 11:50:11 by ade-beco          #+#    #+#             */
+/*   Updated: 2023/09/28 11:54:50 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-/*int ft_test(int x)
+int	ft_any(char **tab, int (*f)(char*))
 {
-	return(x + 2);
-}*/
-
-int	*ft_map(int *tab, int lenght, int (*f)(int))
-{
-	int	*out;
 	int	i;
 
-	out = malloc(sizeof(int) * lenght);
-	if (!out)
-		return (NULL);
 	i = 0;
-	while (i < lenght)
+	while (tab[i] != '\0')
 	{
-		out[i] = (*f)(tab[i]);
+		if ((*f)(tab[i] != 0))
+			return (1);
 		i++;
 	}
-	return (out);
+	return (0);
 }
-
-/*int	main(void)
-{
-	int	tab[] = {2147364746, 45, 78 , 8484, 4984849};
-	ft_map(tab, 5, &ft_test);
-}*/

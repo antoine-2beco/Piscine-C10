@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:19:44 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:28 by ade-beco         ###   ########.fr       */
+/*   Created: 2023/09/28 12:40:07 by ade-beco          #+#    #+#             */
+/*   Updated: 2023/09/28 14:08:15 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-/*int ft_test(int x)
+int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
-	return(x + 2);
-}*/
-
-int	*ft_map(int *tab, int lenght, int (*f)(int))
-{
-	int	*out;
 	int	i;
+	int	sorted;
 
-	out = malloc(sizeof(int) * lenght);
-	if (!out)
-		return (NULL);
 	i = 0;
-	while (i < lenght)
+	sorted = 0;
+	while (i < lenght - 1 && sorted =! 0)
 	{
-		out[i] = (*f)(tab[i]);
+		if ((*f)(tab[i], tab[i + 1]) < 0)
+			sorted = 0;
 		i++;
 	}
-	return (out);
+	if (sorted != 1)
+	{
+		sorted = 1;
+		i = 0;
+		while (i < length - 1)
+		{
+			if ((*f)(tab[i], tab[i + 1]) > 0)
+				return (0);
+			i++;
+		}
+	}
+	return (1);
 }
-
-/*int	main(void)
-{
-	int	tab[] = {2147364746, 45, 78 , 8484, 4984849};
-	ft_map(tab, 5, &ft_test);
-}*/

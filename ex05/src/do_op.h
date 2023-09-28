@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   do_op.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 19:19:44 by ade-beco          #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:28 by ade-beco         ###   ########.fr       */
+/*   Created: 2023/09/28 15:11:05 by ade-beco          #+#    #+#             */
+/*   Updated: 2023/09/28 16:05:54 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef DO_OP_H
+# define DO_OP_H
 
-/*int ft_test(int x)
-{
-	return(x + 2);
-}*/
+# include <unistd.h>
+# include <stdio.h>
 
-int	*ft_map(int *tab, int lenght, int (*f)(int))
-{
-	int	*out;
-	int	i;
+int		main(int argc, char *argv[]);
 
-	out = malloc(sizeof(int) * lenght);
-	if (!out)
-		return (NULL);
-	i = 0;
-	while (i < lenght)
-	{
-		out[i] = (*f)(tab[i]);
-		i++;
-	}
-	return (out);
-}
+int		ft_atoi(char *str);
+void	ft_putstr(char *str);
+void	ft_putchar(char c);
+void	ft_putnbr(int nb);
 
-/*int	main(void)
-{
-	int	tab[] = {2147364746, 45, 78 , 8484, 4984849};
-	ft_map(tab, 5, &ft_test);
-}*/
+int		ft_addition(int a, int b);
+int		ft_soustraction(int a, int b);
+int		ft_division(int a, int b);
+int		ft_multiplication(int a, int b);
+int		ft_modulo(int a, int b);
+
+#endif
